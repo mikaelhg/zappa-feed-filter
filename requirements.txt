@@ -1,0 +1,5 @@
+Flask
+zappa
+requests
+bs4
+lxml
