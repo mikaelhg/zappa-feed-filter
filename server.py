@@ -11,10 +11,8 @@ def wuxia_feed():
         categories = flask.request.args['c'].split(',')
     else:
         categories = None
-    soup = wuxia.filter_by_categories(categories)
-    resp = flask.make_response(soup.prettify(), 200)
-    resp.headers['Content-Type'] = 'application/rss+xml'
-    return resp
+    feed = wuxia.filter_by_categories(categories)
+    return feed.prettify(), 200, {'Content-Type': 'application/rss+xml'}
 
 
 if __name__ == '__main__':
