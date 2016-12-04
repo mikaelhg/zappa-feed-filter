@@ -1,6 +1,6 @@
 import flask
 
-import wuxia
+import wuxia, ampparit
 
 app = flask.Flask(__name__)
 
@@ -13,6 +13,12 @@ def wuxia_feed():
         categories = None
     feed = wuxia.filter_by_categories(categories)
     return feed.prettify(), 200, {'Content-Type': 'application/rss+xml'}
+
+
+@app.route('/api/rss/ampparit')
+def ampparit_feed():
+    feed = ampparit.filter_shitty_sources()
+    return feed.prettify(), 200, {'Content-Type': 'application/atom+xml'}
 
 
 if __name__ == '__main__':
