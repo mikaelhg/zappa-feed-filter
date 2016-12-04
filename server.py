@@ -5,7 +5,7 @@ import wuxia
 app = flask.Flask(__name__)
 
 
-@app.route('/wuxia')
+@app.route('/api/rss/wuxia')
 def wuxia_feed():
     if 'c' in flask.request.args:
         categories = flask.request.args['c'].split(',')
