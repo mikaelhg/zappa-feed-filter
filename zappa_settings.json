@@ -3,6 +3,7 @@
     "aws_region": "eu-central-1",
     "app_function": "server.app",
     "s3_bucket": "zappa-jeyh3yw9s",
+    "memory_size": 128,
     "keep_warm": false
   }
 }
