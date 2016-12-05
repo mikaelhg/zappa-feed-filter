@@ -3,7 +3,9 @@
     "aws_region": "eu-central-1",
     "app_function": "server.app",
     "s3_bucket": "zappa-jeyh3yw9s",
-    "memory_size": 128,
+    "memory_size": 256,
+    "use_precompiled_packages": true,
+    "timeout_seconds": 5,
     "keep_warm": false
   }
 }
