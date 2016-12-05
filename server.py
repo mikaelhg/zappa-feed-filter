@@ -22,5 +22,6 @@ def ampparit_feed():
 
 
 if __name__ == '__main__':
-    app.debug = True
+    from os import getuid
+    app.debug = (getuid() == 1000)
     app.run()
