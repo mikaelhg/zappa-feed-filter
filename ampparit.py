@@ -4,13 +4,14 @@ import requests
 __FEED_URL = 'http://feeds.feedburner.com/ampparit-it'
 
 __SHITTY_SOURCES = [
-    'Iltalehti',
-    'Mobiili.fi',
-    'Mikrobitti.fi',
-    'MTV.fi',
-    'Suomimobiili',
+    'Iltalehti',          # the two worst quality daily papers in Finland
     'Ilta-Sanomat',
-    'Suomen Kuvalehti'
+    'MTV.fi',             # "entertainment"
+    'Mikrobitti.fi',      # ads disguised as "leaks" of new mobile phone models
+    'Puhelinvertailu.com',
+    'Mobiili.fi',
+    'Suomimobiili',
+    'Suomen Kuvalehti'    # useless chaff
 ]
 
 
