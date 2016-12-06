@@ -8,7 +8,9 @@ __SHITTY_SOURCES = [
     'Mobiili.fi',
     'Mikrobitti.fi',
     'MTV.fi',
-    'Suomimobiili'
+    'Suomimobiili',
+    'Ilta-Sanomat',
+    'Suomen Kuvalehti'
 ]
 
 
