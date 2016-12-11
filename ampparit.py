@@ -24,7 +24,13 @@ def filter_shitty_sources():
             author = i.find('author').find('name').string
             if author in __SHITTY_SOURCES:
                 i.extract()
-        except:
+        except AttributeError:
             pass
+
+    soup.feed.title.string = 'Ampparit.com IT filtered'
+
+    self_link = soup.find('link', {'rel': 'self'})
+    if self_link:
+        self_link['href'] = 'https://mikael.io/api/rss/ampparit'
 
     return soup
