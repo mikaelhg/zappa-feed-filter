@@ -1,5 +1,6 @@
 import bs4
 import requests
+from urlparse import urlparse
 
 __FEED_URL = 'http://feeds.feedburner.com/ampparit-it'
 
@@ -12,6 +13,10 @@ __SHITTY_SOURCES = [
     'Mobiili.fi',
     'Suomimobiili',
     'Suomen Kuvalehti'    # useless chaff
+]
+
+__SHITTY_DOMAINS = [
+    'www.iltasanomat.fi'
 ]
 
 
@@ -33,4 +38,21 @@ def filter_shitty_sources():
     if self_link:
         self_link['href'] = 'https://mikael.io/api/rss/ampparit'
 
+    for tag in soup.find_all('link', {'rel': 'alternate'}):
+        link = get_actual_link(tag.attrs['href'])
+        url = urlparse(link)
+        if url.netloc in __SHITTY_DOMAINS:
+            tag.parent.extract()
+        else:
+            tag.attrs['href'] = link
+            tag.parent.id.string = link
+
     return soup
+
+
+def get_actual_link(url):
+    response = requests.head(url, timeout=1)
+    if response and 'Location' in response.headers:
+        return response.headers['Location']
+    else:
+        return url
