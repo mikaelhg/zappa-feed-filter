@@ -1,6 +1,7 @@
 import bs4
 import requests
 from urlparse import urlparse
+from fake_useragent import UserAgent
 
 __FEED_URL = 'http://feeds.feedburner.com/ampparit-it'
 
@@ -16,8 +17,11 @@ __SHITTY_SOURCES = [
 ]
 
 __SHITTY_DOMAINS = [
-    'www.iltasanomat.fi'
+    'www.iltasanomat.fi',
+    'www.is.fi'
 ]
+
+__headers = {'User-Agent': UserAgent().chrome}
 
 
 def filter_shitty_sources():
@@ -56,3 +60,10 @@ def get_actual_link(url):
         return response.headers['Location']
     else:
         return url
+
+
+def get_content(url):
+    page = requests.get(url, headers=__headers)
+    soup = bs4.BeautifulSoup(page.text, 'html.parser')
+
+
