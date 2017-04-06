@@ -12,13 +12,13 @@ def wuxia_feed():
     else:
         categories = None
     feed = wuxia.filter_by_categories(categories)
-    return feed.prettify(), 200, {'Content-Type': 'application/rss+xml'}
+    return feed.prettify(), 200, {'Content-Type': 'application/rss+xml; charset=utf-8'}
 
 
 @app.route('/api/rss/ampparit')
 def ampparit_feed():
     feed = ampparit.filter_shitty_sources()
-    return feed.prettify(), 200, {'Content-Type': 'application/atom+xml'}
+    return feed.prettify(), 200, {'Content-Type': 'application/atom+xml; charset=utf-8'}
 
 
 if __name__ == '__main__':
