@@ -10,13 +10,20 @@ __OK_ATTRS = {
 
 
 def clean_attrs(tag):
+    """
+    :type tag: bs4.element.Tag
+    :rtype: None
+    """
     for k, v in list(tag.attrs.items()):
         if k.startswith('data-') or k in ('style', 'class', 'srcset'):
             del tag.attrs[k]
 
 
 def clean_tags(soup):
-
+    """
+    :type soup: bs4.BeautifulSoup
+    :rtype: None
+    """
     for tag in soup.find_all(True):
         if tag.name in ('span', 'div', 'p', 'a', 'br', 'hr', 'strong', 'b', 'i', 'h1', 'h2', 'h3'):
             clean_attrs(tag)

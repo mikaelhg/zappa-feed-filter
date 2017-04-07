@@ -12,7 +12,7 @@ __SHITTY_SOURCES = [
     'Mikrobitti.fi',      # ads disguised as "leaks" of new mobile phone models
     'Puhelinvertailu.com',
     'Mobiili.fi',
-    'Suomimobiili',
+    'SuomiMobiili',
     'Suomen Kuvalehti'    # useless chaff
 ]
 
@@ -25,6 +25,9 @@ __headers = {'User-Agent': UserAgent().chrome}
 
 
 def filter_shitty_sources():
+    """
+    :rtype: bs4.BeautifulSoup
+    """
     input_feed = requests.get(__FEED_URL)
     soup = bs4.BeautifulSoup(input_feed.text, 'xml')
 
@@ -55,6 +58,10 @@ def filter_shitty_sources():
 
 
 def get_actual_link(url):
+    """
+    :type url: str
+    :rtype: str
+    """
     response = requests.head(url, timeout=1)
     if response and 'Location' in response.headers:
         return response.headers['Location']

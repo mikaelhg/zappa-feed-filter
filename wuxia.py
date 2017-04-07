@@ -5,6 +5,10 @@ __FEED_URL = 'http://www.wuxiaworld.com/feed/'
 
 
 def filter_by_categories(categories):
+    """
+    :type categories: list of str
+    :rtype: bs4.BeautifulSoup
+    """
     input_feed = requests.get(__FEED_URL)
     soup = bs4.BeautifulSoup(input_feed.text, 'xml')
 
